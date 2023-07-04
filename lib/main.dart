@@ -185,27 +185,83 @@ class MyHomePage extends StatelessWidget {
               ),
             ),
             Align(
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                // color: Colors.transparent,
-                height: 356.92,
-                decoration: const BoxDecoration(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  // color: Colors.transparent,
+                  height: 356.92,
+                  decoration: const BoxDecoration(
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(50.0),
                       topRight: Radius.circular(50.0),
                     ),
                     gradient: LinearGradient(
-                        begin: Alignment.topRight,
-                        end: Alignment.bottomRight,
-                        colors: [
-                          Color(0xB0ACAAB0),
-                          Color(0x00000000),
-                        ])),
-              ),
-            )
+                      begin: Alignment.topRight,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        Color(0xFFACAAB0),
+                        Color(0x00000000),
+                      ],
+                    ),
+                  ),
+                  child: ClipPath(
+                    clipper: CustomClipPath(),
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            Color(0xFFB387F3),
+                            Color(0x00FFF1F1),
+                          ],
+                        ),
+                      ),
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          Icon(Icons.menu),
+                          Icon(Icons.add),
+                          Icon(Icons.list),
+                        ],
+                      ),
+                    ),
+                  ),
+                )),
           ],
         ),
       ),
     );
+  }
+}
+
+class CustomClipPath extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    double w = size.width;
+    double h = size.height;
+
+    final path = Path();
+    path.moveTo(0, 220);
+    path.lineTo(0, 220);
+    path.quadraticBezierTo(w * 0.5, 300, w, 220);
+    path.lineTo(w, 220);
+    path.lineTo(w, h);
+    path.lineTo(0, h);
+    path.lineTo(0, 220);
+
+    path.close();
+    // path.quadraticBezierTo(
+    //   w * 0.5,
+    //   h + 100,
+    //   w,
+    //   h,
+    // );
+    // path.moveTo(w, 281);
+    return path;
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
+    return false;
   }
 }
