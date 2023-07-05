@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'custom_clip_path.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -185,65 +186,74 @@ class MyHomePage extends StatelessWidget {
               ),
             ),
             Align(
-                alignment: Alignment.bottomCenter,
-                child: Container(
-                  height: 356.92, //356.92
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(50.0),
-                      topRight: Radius.circular(50.0),
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                height: 356.92, //356.92
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(50.0),
+                    topRight: Radius.circular(50.0),
+                  ),
+                  gradient: LinearGradient(
+                    begin: Alignment.topRight,
+                    end: Alignment.bottomRight,
+                    colors: [
+                      Color(0xB0ACAAB0),
+                      Color(0x00000000),
+                    ],
+                  ),
+                ),
+                child: ClipPath(
+                  clipper: CustomClipPath(),
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Color(0xFFB387F3),
+                          Color(0x00FFF1F1),
+                        ],
+                      ),
                     ),
-                    gradient: LinearGradient(
-                      begin: Alignment.topRight,
-                      end: Alignment.bottomRight,
-                      colors: [
-                        Color(0xB0ACAAB0),
-                        Color(0x00000000),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 20),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              const Icon(
+                                Icons.menu_book,
+                                color: Colors.white,
+                              ),
+                              FloatingActionButton(
+                                onPressed: () {},
+                                backgroundColor: const Color(0x4FD0A2F3),
+                                child: const Icon(Icons.add),
+                              ),
+                              const Icon(
+                                Icons.list,
+                                color: Colors.white,
+                              ),
+                            ],
+                          ),
+                        ),
                       ],
                     ),
                   ),
-                  child: ClipPath(
-                    clipper: CustomClipPath(),
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            Color(0xFFB387F3),
-                            Color(0x00FFF1F1),
-                          ],
-                        ),
-                      ),
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 20),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: <Widget>[
-                                  const Icon(
-                                    Icons.menu_book,
-                                    color: Colors.white,
-                                  ),
-                                  FloatingActionButton(
-                                    onPressed: () {},
-                                    backgroundColor: const Color(0x4FD0A2F3),
-                                    child: const Icon(Icons.add),
-                                  ),
-                                  const Icon(
-                                    Icons.list,
-                                    color: Colors.white,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ]),
-                    ),
-                  ),
-                )),
+                ),
+              ),
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                height: 356.92,
+                child: const Text("data"),
+              ),
+            ),
           ],
         ),
       ),
@@ -251,27 +261,68 @@ class MyHomePage extends StatelessWidget {
   }
 }
 
-class CustomClipPath extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    double w = size.width;
-    double h = size.height;
 
-    final path = Path();
-    path.moveTo(0, 220);
-    path.lineTo(0, 220);
-    path.quadraticBezierTo(w * 0.5, 300, w, 220);
-    path.lineTo(w, 220);
-    path.lineTo(w, h);
-    path.lineTo(0, h);
-    path.lineTo(0, 220);
-
-    path.close();
-    return path;
-  }
-
-  @override
-  bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
-    return false;
-  }
-}
+/*
+Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                height: 356.92, //356.92
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(50.0),
+                    topRight: Radius.circular(50.0),
+                  ),
+                  gradient: LinearGradient(
+                    begin: Alignment.topRight,
+                    end: Alignment.bottomRight,
+                    colors: [
+                      Color(0xB0ACAAB0),
+                      Color(0x00000000),
+                    ],
+                  ),
+                ),
+                child: ClipPath(
+                  clipper: CustomClipPath(),
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Color(0xFFB387F3),
+                          Color(0x00FFF1F1),
+                        ],
+                      ),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 20),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              const Icon(
+                                Icons.menu_book,
+                                color: Colors.white,
+                              ),
+                              FloatingActionButton(
+                                onPressed: () {},
+                                backgroundColor: const Color(0x4FD0A2F3),
+                                child: const Icon(Icons.add),
+                              ),
+                              const Icon(
+                                Icons.list,
+                                color: Colors.white,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+ */
