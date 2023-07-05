@@ -187,8 +187,7 @@ class MyHomePage extends StatelessWidget {
             Align(
                 alignment: Alignment.bottomCenter,
                 child: Container(
-                  // color: Colors.transparent,
-                  height: 356.92,
+                  height: 356.92, //356.92
                   decoration: const BoxDecoration(
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(50.0),
@@ -198,7 +197,7 @@ class MyHomePage extends StatelessWidget {
                       begin: Alignment.topRight,
                       end: Alignment.bottomRight,
                       colors: [
-                        Color(0xFFACAAB0),
+                        Color(0xB0ACAAB0),
                         Color(0x00000000),
                       ],
                     ),
@@ -216,13 +215,27 @@ class MyHomePage extends StatelessWidget {
                           ],
                         ),
                       ),
-                      child: const Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: <Widget>[
-                          Icon(Icons.menu),
-                          Icon(Icons.add),
-                          Icon(Icons.list),
-                        ],
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 25.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: <Widget>[
+                            const Icon(
+                              Icons.menu_book,
+                              color: Colors.white,
+                            ),
+                            FloatingActionButton(
+                              onPressed: () {},
+                              backgroundColor: const Color(0x4FD0A2F3),
+                              child: const Icon(Icons.add),
+                            ),
+                            const Icon(
+                              Icons.list,
+                              color: Colors.white,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -250,13 +263,6 @@ class CustomClipPath extends CustomClipper<Path> {
     path.lineTo(0, 220);
 
     path.close();
-    // path.quadraticBezierTo(
-    //   w * 0.5,
-    //   h + 100,
-    //   w,
-    //   h,
-    // );
-    // path.moveTo(w, 281);
     return path;
   }
 
