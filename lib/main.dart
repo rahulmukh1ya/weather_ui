@@ -215,28 +215,32 @@ class MyHomePage extends StatelessWidget {
                           ],
                         ),
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(bottom: 25.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: <Widget>[
-                            const Icon(
-                              Icons.menu_book,
-                              color: Colors.white,
+                      child: Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 20),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: <Widget>[
+                                  const Icon(
+                                    Icons.menu_book,
+                                    color: Colors.white,
+                                  ),
+                                  FloatingActionButton(
+                                    onPressed: () {},
+                                    backgroundColor: const Color(0x4FD0A2F3),
+                                    child: const Icon(Icons.add),
+                                  ),
+                                  const Icon(
+                                    Icons.list,
+                                    color: Colors.white,
+                                  ),
+                                ],
+                              ),
                             ),
-                            FloatingActionButton(
-                              onPressed: () {},
-                              backgroundColor: const Color(0x4FD0A2F3),
-                              child: const Icon(Icons.add),
-                            ),
-                            const Icon(
-                              Icons.list,
-                              color: Colors.white,
-                            ),
-                          ],
-                        ),
-                      ),
+                          ]),
                     ),
                   ),
                 )),
