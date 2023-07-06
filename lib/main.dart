@@ -198,7 +198,7 @@ class MyHomePage extends StatelessWidget {
                     begin: Alignment.topRight,
                     end: Alignment.bottomRight,
                     colors: [
-                      Color(0xB0ACAAB0),
+                      Color(0x80ACAAB0),
                       Color(0x00000000),
                     ],
                   ),
@@ -250,9 +250,54 @@ class MyHomePage extends StatelessWidget {
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
-                height: 356.92,
-                child: const Text("data"),
-              ),
+                  height: 350,
+                  width: double.infinity,
+                  child: Column(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.only(right: 20, left: 20),
+                        // color: const Color.fromARGB(77, 15, 121, 208),
+                        height: 63.72,
+                        child: const Row(
+                          // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Hourly Forecast",
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w600,
+                                  color: Color(0x99EBEBF5)),
+                            ),
+                            Expanded(
+                              child: Divider(
+                                color: Color(0x82000000),
+                                thickness: 5,
+                                height: 0,
+                                indent: 35,
+                                endIndent: 35,
+                              ),
+                            ),
+                            Text(
+                              "Weelkly Forecast",
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w600,
+                                  color: Color(0x99EBEBF5)),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const Divider(
+                        color: Color(0x6BA9A7AB),
+                        thickness: 2,
+                      ),
+                      Container(
+                        // color: Colors.yellow,
+                        height: 132.81,
+                      )
+                    ],
+                  )),
             ),
           ],
         ),
