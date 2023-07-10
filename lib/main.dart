@@ -93,54 +93,92 @@ class MyHomePage extends StatelessWidget {
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
-                  height: 350,
-                  width: double.infinity,
-                  child: Column(
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.only(right: 20, left: 20),
-                        // color: const Color.fromARGB(77, 15, 121, 208),
-                        height: 63.72,
-                        child: const Row(
-                          // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Hourly Forecast",
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(0x99EBEBF5)),
+                height: 350,
+                width: double.infinity,
+                child: Column(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.only(right: 20, left: 20),
+                      // color: const Color.fromARGB(77, 15, 121, 208),
+                      height: 63.72,
+                      child: const Row(
+                        // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Hourly Forecast",
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w600,
+                                color: Color(0x99EBEBF5)),
+                          ),
+                          Expanded(
+                            child: Divider(
+                              color: Color(0x82000000),
+                              thickness: 5,
+                              height: 0,
+                              indent: 35,
+                              endIndent: 35,
                             ),
-                            Expanded(
-                              child: Divider(
-                                color: Color(0x82000000),
-                                thickness: 5,
-                                height: 0,
-                                indent: 35,
-                                endIndent: 35,
-                              ),
-                            ),
-                            Text(
-                              "Weelkly Forecast",
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(0x99EBEBF5)),
-                            ),
-                          ],
+                          ),
+                          Text(
+                            "Weelkly Forecast",
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w600,
+                                color: Color(0x99EBEBF5)),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const Divider(
+                      color: Color(0x6BA9A7AB),
+                      thickness: 2,
+                    ),
+                    SizedBox(
+                      // color: Colors.yellow,
+                      height: 132.81,
+                      // padding: const EdgeInsets.all(10),
+                      child: ListView(
+                        shrinkWrap: true,
+                        scrollDirection: Axis.horizontal,
+                        children: List.generate(
+                          10,
+                          (index) => Padding(
+                            padding: const EdgeInsets.only(right: 7, left: 7),
+                            child: Container(
+                                height: 50,
+                                width: 70,
+                                decoration: const BoxDecoration(
+                                  // border: Border.all(color: Colors.purple),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(35),
+                                  ),
+                                  gradient: LinearGradient(
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                    colors: [
+                                      Color(0xBFAD1DEB),
+                                      Color(0xBF6E72FC),
+                                    ],
+                                  ),
+                                ),
+                                child: const Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: <Widget>[
+                                    Text("Hello"),
+                                    Icon(Icons.cloud),
+                                    Text("World")
+                                  ],
+                                )),
+                          ),
                         ),
                       ),
-                      const Divider(
-                        color: Color(0x6BA9A7AB),
-                        thickness: 2,
-                      ),
-                      Container(
-                        // color: Colors.yellow,
-                        height: 132.81,
-                      )
-                    ],
-                  )),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ],
         ),
@@ -148,69 +186,3 @@ class MyHomePage extends StatelessWidget {
     );
   }
 }
-
-
-/*
-Align(
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                height: 356.92, //356.92
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(50.0),
-                    topRight: Radius.circular(50.0),
-                  ),
-                  gradient: LinearGradient(
-                    begin: Alignment.topRight,
-                    end: Alignment.bottomRight,
-                    colors: [
-                      Color(0x80ACAAB0),
-                      Color(0x00000000),
-                    ],
-                  ),
-                ),
-                child: ClipPath(
-                  clipper: CustomClipPath(),
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                          Color(0xFFB387F3),
-                          Color(0x00FFF1F1),
-                        ],
-                      ),
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 20),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: <Widget>[
-                              const Icon(
-                                Icons.menu_book,
-                                color: Colors.white,
-                              ),
-                              FloatingActionButton(
-                                onPressed: () {},
-                                backgroundColor: const Color(0x4FD0A2F3),
-                                child: const Icon(Icons.add),
-                              ),
-                              const Icon(
-                                Icons.list,
-                                color: Colors.white,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
- */
