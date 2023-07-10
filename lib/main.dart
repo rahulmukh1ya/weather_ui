@@ -6,6 +6,7 @@ import 'package:weather_ui/UI/Widgets/bottom_container_widget.dart';
 import 'package:weather_ui/UI/Widgets/cloud_widget.dart';
 import 'package:weather_ui/UI/Widgets/weather_info_widget.dart';
 import 'UI/Widgets/Bezier_Curve/bezier_curve_widget.dart';
+import 'Models/weather_model.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,14 +27,34 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(),
+      home: MyHomePage(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
+  MyHomePage({super.key});
+
+  final List<WeatherModel> weatherData = [
+    WeatherModel(
+        time: "12 AM", iconData: Icons.thunderstorm, temperature: "19°"),
+    WeatherModel(
+        time: "Now",
+        iconData: Icons.wb_cloudy,
+        temperature: "15°",
+        isSelected: true),
+    WeatherModel(time: "2 AM", iconData: Icons.nights_stay, temperature: "13°"),
+    WeatherModel(time: "3 AM", iconData: Icons.cloud, temperature: "11°"),
+    WeatherModel(time: "4 AM", iconData: Icons.storm, temperature: "12°"),
+    WeatherModel(time: "5 AM", iconData: Icons.tornado, temperature: "15°"),
+    WeatherModel(
+        time: "6 AM", iconData: Icons.wb_twighlight, temperature: "20°"),
+    WeatherModel(time: "7 AM", iconData: Icons.wb_sunny, temperature: "21°"),
+    WeatherModel(
+        time: "8 AM", iconData: Icons.sunny_snowing, temperature: "23°"),
+    WeatherModel(time: "9 AM", iconData: Icons.tsunami, temperature: "25°"),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -92,7 +113,7 @@ class MyHomePage extends StatelessWidget {
             ),
             Align(
               alignment: Alignment.bottomCenter,
-              child: Container(
+              child: SizedBox(
                 height: 350,
                 width: double.infinity,
                 child: Column(
@@ -143,33 +164,41 @@ class MyHomePage extends StatelessWidget {
                         shrinkWrap: true,
                         scrollDirection: Axis.horizontal,
                         children: List.generate(
-                          10,
+                          weatherData.length,
                           (index) => Padding(
                             padding: const EdgeInsets.only(right: 7, left: 7),
                             child: Container(
                                 height: 50,
                                 width: 70,
-                                decoration: const BoxDecoration(
-                                  // border: Border.all(color: Colors.purple),
-                                  borderRadius: BorderRadius.all(
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: const Color(0x33FFFFFF)),
+                                  borderRadius: const BorderRadius.all(
                                     Radius.circular(35),
                                   ),
-                                  gradient: LinearGradient(
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter,
-                                    colors: [
-                                      Color(0xBFAD1DEB),
-                                      Color(0xBF6E72FC),
-                                    ],
-                                  ),
+                                  // color: const Color(0x3348319D),
+                                  color: weatherData[index].isSelected
+                                      ? const Color(0xFF48319D)
+                                      : const Color(0x3348319D),
                                 ),
-                                child: const Column(
+                                child: Column(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   children: <Widget>[
-                                    Text("Hello"),
-                                    Icon(Icons.cloud),
-                                    Text("World")
+                                    Text(
+                                      weatherData[index].time,
+                                      style: const TextStyle(
+                                          fontSize: 15, color: Colors.white),
+                                    ),
+                                    Icon(
+                                      weatherData[index].iconData,
+                                      color: Colors.white,
+                                    ),
+                                    Text(
+                                      weatherData[index].temperature,
+                                      style: const TextStyle(
+                                          fontSize: 20, color: Colors.white),
+                                    )
                                   ],
                                 )),
                           ),
