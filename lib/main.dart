@@ -45,7 +45,7 @@ class MyHomePage extends StatelessWidget {
         temperature: "15°",
         isSelected: true),
     WeatherModel(time: "2 AM", iconData: Icons.nights_stay, temperature: "13°"),
-    WeatherModel(time: "3 AM", iconData: Icons.cloud, temperature: "11°"),
+    WeatherModel(time: "3 AM", iconData: Icons.air, temperature: "11°"),
     WeatherModel(time: "4 AM", iconData: Icons.storm, temperature: "12°"),
     WeatherModel(time: "5 AM", iconData: Icons.tornado, temperature: "15°"),
     WeatherModel(
